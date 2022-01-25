@@ -16,7 +16,7 @@
             },
             {
                 "internalType": "uint256",
-                "name": "_adminssionFee",
+                "name": "_admissionFee",
                 "type": "uint256"
             },
             {
@@ -36,7 +36,7 @@
             "name": "_index",
             "type": "uint256"
         }],
-        "name": "applyForAdminssion",
+        "name": "applyForAdmission",
         "outputs": [],
         "stateMutability": "payable",
         "type": "function"
@@ -62,7 +62,7 @@
             "name": "_index",
             "type": "uint256"
         }],
-        "name": "getAdminssion",
+        "name": "getAdmission",
         "outputs": [{
                 "internalType": "address payable",
                 "name": "",

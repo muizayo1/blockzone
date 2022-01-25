@@ -34,7 +34,7 @@ contract Blockzones {
         string title;
         string description;
         string date;
-        uint adminssionFee;
+        uint admissionFee;
         uint schoolFee;
         uint totalApplicants;
     }
@@ -45,7 +45,7 @@ contract Blockzones {
         string memory _title,
         string memory _description, 
         string memory _date,
-        uint _adminssionFee,
+        uint _admissionFee,
         uint _schoolFee
     ) public {
         uint _totalApplicants = 0;
@@ -54,14 +54,14 @@ contract Blockzones {
             _title,
             _description,
             _date,
-            _adminssionFee,
+            _admissionFee,
             _schoolFee,
             _totalApplicants
         );
         blockzonesLength++;
     }
 
-    function getAdminssion(uint _index) public view returns (
+    function getAdmission(uint _index) public view returns (
         address payable,
         string memory,
         string memory,
@@ -75,18 +75,18 @@ contract Blockzones {
             blockzones[_index].title, 
             blockzones[_index].description, 
             blockzones[_index].date, 
-            blockzones[_index].adminssionFee,
+            blockzones[_index].admissionFee,
             blockzones[_index].schoolFee,
             blockzones[_index].totalApplicants
         );
     }
 
-    function applyForAdminssion(uint _index) public payable  {
+    function applyForAdmission(uint _index) public payable  {
         require(
           IERC20Token(cUsdTokenAddress).transferFrom(
             msg.sender,
             blockzones[_index].owner,
-            blockzones[_index].adminssionFee.add(blockzones[_index].schoolFee)
+            blockzones[_index].admissionFee.add(blockzones[_index].schoolFee)
           ),
           "Transfer failed."
         );
