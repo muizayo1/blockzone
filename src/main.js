@@ -88,15 +88,16 @@ document
     .querySelector("#applyNow")
     .addEventListener("click", async() => {
         notification("⌛ Waiting for payment approval...")
+        const fee = new BigNumber(parseFloat(2e18)).shiftedBy(ERC20_DECIMALS)
         try {
-            await approve(clothes[index].price.toString())
+            await approve(fee)
         } catch (error) {
             notification(`⚠️ ${error}.`)
         }
         notification(`⌛ Awaiting payment for "Admission"...`)
         try {
             const result = await contract.methods
-                .applyForAdmission(index, new BigNumber(parseFloat(2e18)).shiftedBy(ERC20_DECIMALS))
+                .applyForAdmission(index, fee)
                 .send({ from: kit.defaultAccount })
             notification(`🎉 You successfully bought "Admission".`)
             console.log(result)
